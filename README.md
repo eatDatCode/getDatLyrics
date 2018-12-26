@@ -25,7 +25,7 @@ $ sudo mv support/ /usr/lib/python3.7/site-packages/
 
 # Congrats !
 
-If not error was found in those steps then opent a terminal from anywhere and type
+If no error occured in those steps then opent a terminal from anywhere and type
 
 $ lyrics (your song)
 
