@@ -44,7 +44,7 @@ e.g. $ lyrics ben cok sev turkish
 
 # Need more plugins?
 
-If you think your taste of songs is little unique and these plugins lyrics are not enough to get you that lyrics,
+If you think your taste of music is unique and these plugins are not enough to get you that lyrics,
 then please leave a comment.
 
 Or if you want you can add a plugin for your favourite lyrical website.
@@ -53,7 +53,7 @@ Just do the following:
 
 1) Go to support directory of the git repo and open search.py
 
-2) Add the domain name of the site and give the index as value in the plugins_site dictionary
+2) Add the domain name of the site and give the index as value for the plugins_site dictionary
 
-3) Go to plugins.py and add at the bottom of teh get_lyrics() method another elif condition and give the new index as condition
+3) Go to plugins.py and add at the bottom of the get_lyrics() method another elif condition and give the new index as condition
 and add the details of the attributes and class where the lyrics is found in the website( Tips: Use mozilla developer tool to inspect the webpage)
