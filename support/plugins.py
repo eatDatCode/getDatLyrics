@@ -104,7 +104,10 @@ class Plugin():
         elif self.index == 15:                                              #gdn8.com
             request_lyrics = Request(self.link,'.MsoPlainText span')
             lyrics = request_lyrics.get_tags()
-            return (lyrics[0].get_text())
+            lyrical = ''
+            for i in range(len(lyrics)):
+                lyrical += lyrics[i].get_text()
+            return (lyrical)
 
         elif self.index == 16:                                              #bengalilyrics24.blogspot.com
             request_lyrics = Request(self.link,'#lv')
