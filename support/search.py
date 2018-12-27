@@ -14,7 +14,7 @@ plugin_sites = {'genius':1,
                 'azlyrics':2,
                 'metrolyrics':3,
                 'lyricsmode':4,
-                'lyricsfreak':5,
+                'lyricsfreaks':5,  # this is not going to help because it's url in google comes really hazy
                 'elyrics':6,
                 'stlyrics':7,
                 'lyricsmasti':8,
@@ -50,7 +50,8 @@ class Google(Request):
         """Check if the list self.sites has an available lyrical site
         to pull the lyrics from."""
         l = len(self.ancors)
-
+        
+        url = ''
         for i in range(l):
 
             #Try this it will give lyrics from different website by using random choice of links
@@ -67,5 +68,5 @@ class Google(Request):
             if domain in plugin_sites.keys():
                 return [url,plugin_sites[domain]]
                 break
-        if url == None:
+        if url == '':
             return None
