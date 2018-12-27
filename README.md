@@ -23,6 +23,14 @@ $ sudo mv lyrics /usr/bin/
 
 $ sudo mv support/ /usr/lib/python3.7/site-packages/
 
+# For python version 3 to 3.6
+ 
+ If you use pip3 and your pip is not configured for python3.7 or 3.6 
+
+ Then you have move the support/ directory to /usr/lib/python3/ directory:
+
+$ sudo mv support/ /usr/lib/python3/dist-packages/
+
 # Congrats !
 
 If no error occured in those steps then opent a terminal from anywhere and type
