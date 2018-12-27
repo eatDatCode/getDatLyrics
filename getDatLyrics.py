@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python4.7
 """
 file: getDatLyrics.py
 author: @github.com/eatDatCode
@@ -17,7 +17,7 @@ def getDatLyrics(query):
     link = search_google.get_links()
 
     # If the lyrics not found ,print error or fetch the lyrics
-    if link[0]== None:
+    if link == None:
         print("""
                 Sorry, that lyrics wasn't found!
                 Please leave comment as the song name
@@ -26,8 +26,11 @@ def getDatLyrics(query):
     else:
         # Request the lyrics usgin plugins module
         lyrics_request = Plugin(link[0])
+        url = (re.compile(r'(http(s)?://)?(www.)?([a-z,0-9]+)(.[a-z]+)').search(link[0]))
+        provider = url.group(4)+url.group(5)
         lyrics = lyrics_request.get_lyrics(link[1])
         print(lyrics)
+        print("Provided by:%s" % provider)
 
 if __name__=='__main__':
     """Main method take arguments from command line and form a query."""
