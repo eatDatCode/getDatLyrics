@@ -1,4 +1,4 @@
-#!/usr/bin/python4.7
+#!/usr/bin/python3.7
 """
 file: getDatLyrics.py
 author: @github.com/eatDatCode
@@ -26,10 +26,12 @@ def getDatLyrics(query):
     else:
         # Request the lyrics usgin plugins module
         lyrics_request = Plugin(link[0])
-        url = (re.compile(r'(http(s)?://)?(www.)?([a-z,0-9]+)(.[a-z]+)').search(link[0]))
-        provider = url.group(4)+url.group(5)
         lyrics = lyrics_request.get_lyrics(link[1])
         print(lyrics)
+
+        # Print the courtesy of the lyrics provider
+        provider = re.compile(r'.+//').sub('',link[0])
+        provider = re.compile(r'/.+').sub('',provider)
         print("Provided by:%s" % provider)
 
 if __name__=='__main__':
