@@ -29,23 +29,23 @@ class Plugin():
             lyrics = request_lyrics.get_tags()
             return (lyrics[6].get_text())
 
-        elif self.index == 3:                                               #metrolyrics.com
-            request_lyrics = Request(self.link,'.verse')
+        elif self.index == 3:                                              #ilikelyrics.com
+            request_lyrics = Request(self.link,'.lyric')
             lyrics = request_lyrics.get_tags()
-            lyrical = ''
-            for i in range(len(lyrics)):
-                lyrical += lyrics[i].get_text()
-            return (lyrical)
+            return (lyrics[0].get_text())
 
         elif self.index == 4:                                               #lyricsmode.com
             request_lyrics = Request(self.link,'#lyrics-text')
             lyrics = request_lyrics.get_tags()
             return (lyrics[0].get_text())
 
-        elif self.index == 5:                                               #lyricsfreak.com
-            request_lyrics = Request(self.link,'#content')
+        elif self.index == 5:                                               #metrolyrics.com
+            request_lyrics = Request(self.link,'.verse')
             lyrics = request_lyrics.get_tags()
-            return (lyrics[0].get_text())
+            lyrical = ''
+            for i in range(len(lyrics)):
+                lyrical += lyrics[i].get_text()
+            return (lyrical)
 
         elif self.index == 6:                                               #elyrics.com
             request_lyrics = Request(self.link,'#inlyr')
@@ -160,7 +160,7 @@ class Plugin():
             lyrical = ''
             for i in range(len(lyrics)):
                 lyrical += str(lyrics[i])
-            lyrical = re.compile(r'(<p>)?(<br/>)?').sub('',lyrical)
+            lyrical = re.compile(r'(<p>)|(<br/>)').sub('',lyrical)
             lyrical = re.compile(r'</p>').sub('\n',lyrical)
             return (lyrical)
 
@@ -186,10 +186,8 @@ class Plugin():
             lyrical = ''
             for i in range(len(lyrics)):
                 lyrical += str(lyrics[i])
-            lyrical = re.compile(r'<br/>').sub('\n',lyrical)
-            lyrical = re.compile(r'</p>').sub('\n',lyrical)
-            lyrical = re.compile(r'<p>').sub('',lyrical)
-            lyrical = re.compile(r'<a.+>.+</a>').sub('',lyrical)
+            lyrical = re.compile(r'<br/>|</p>').sub('\n',lyrical)
+            lyrical = re.compile(r'<p>|(<a.+>.+</a>)').sub('',lyrical)
             return (lyrical)
 
         elif self.index == 26:                                              #brainly.in
@@ -198,3 +196,69 @@ class Plugin():
             lyrical = re.compile(r'<br/>').sub('\n',str(lyrics[0]))
             lyrical = re.compile(r'<(/)?div(.+)?>').sub('',lyrical)
             return (lyrical)
+
+        elif self.index == 27:                                               #lyricsfreak.com
+            request_lyrics = Request(self.link,'#content')
+            lyrics = request_lyrics.get_tags()
+            lyrical = str(lyrics[0])
+            lyrical = re.compile(r'<br/><br/>').sub('\n',lyrical)
+            lyrical = re.compile(r'<br/>|<(/)?div(.+)?>').sub('',lyrical)
+            return (lyrical)
+
+        elif self.index == 28:                                              #lyricsbogie.com
+            request_lyrics = Request(self.link,'#lyricsDiv p')
+            lyrics = request_lyrics.get_tags()
+            lyrical = ''
+            for i in range(len(lyrics)):
+                lyrical += str(lyrics[i])
+            lyrical = re.compile(r'<br/>|<p>').sub('',lyrical)
+            lyrical = re.compile(r'</p>').sub('\n',lyrical)
+            return (lyrical)
+
+        elif self.index == 29:                                             #paroles-musique.com
+            request_lyrics = Request(self.link,'#lyrics')
+            lyrics = request_lyrics.get_tags()
+            return (lyrics[0].get_text())
+
+        elif self.index == 30:                                              #lyricgram.com
+            request_lyrics = Request(self.link,'.lyric-text blockquote')
+            lyrics = request_lyrics.get_tags()
+            lyrical = str(lyrics[0])
+            lyrical = re.compile(r'<(/)?blockquote>|<(/)?p>').sub('',lyrical)
+            lyrical = re.compile(r'<br/>').sub('\n',lyrical)
+            return (lyrical)
+
+        elif self.index == 31:                                                #oldhindilyrics.com
+            request_lyrics = Request(self.link,'.entry-content p')
+            lyrics = request_lyrics.get_tags()
+            lyrical = ''
+            for i in range(len(lyrics)):
+                lyrical += str(lyrics[i])
+            lyrical = re.compile(r'<p>|<br/>|<u>').sub('',lyrical)
+            lyrical = re.compile(r'</p>|</u>').sub('\n',lyrical)
+            return (lyrical)
+
+        elif self.index == 32:                                              #geetmanjusha.com
+            request_lyrics = Request(self.link,'.entity-description pre')
+            lyrics = request_lyrics.get_tags()
+            lyrical = ''
+            for i in range():
+                lyrical += lyrics[i].get_text()
+            return (lyrical)
+
+        elif self.index == 33:                                                #lyricstranslate.com
+            request_lyrics = Request(self.link,'.song-node-text div.par')
+            lyrics = request_lyrics.get_tags()
+            lyrical = ''
+            for i in range(len(lyrics)):
+                lyrical += lyrics[i].get_text()
+            return (lyrical)
+
+
+        """Add your plugins from here on."""
+        #elif self.index == :                                                #plugin_site_name
+        #    request_lyrics = Request(self.link,'')
+        #    lyrics = request_lyrics.get_tags()
+        #    lyrical = ''
+        #    return (lyrical)
+
